@@ -143,3 +143,25 @@ If some of the entries of the CoI results could not be matched with any row in
 the subreviewer tables, the script will issue a warning. This is usually caused
 by, e.g., accents or umlauts in the author names and may be fixed by either
 amending the result tables or the subreviewer tables.
+
+
+## Schema information
+
+This section lists the schema of each data file consumed by the scripts. The
+scripts do not perform any schema validation. If you encounter errors or
+unexpected output, please check if your input data has the right format.
+
+* `generate.py`
+
+    - `reviewer.csv` (separator: `,`): PC member ID, name, mail address, role
+    - `assignment.csv` (separator: `,`): PC member ID, submission ID
+    - `submissions.csv` (separator: `;`): submission ID, authors, title, ...
+
+* `merge.py`
+
+    - subreviewer table (separator: `;`): submission ID, title, first name, last name, email address, dblp page
+
+* `feedback.py`
+
+    - `CoiPC.csv` (separator: `;`): author, (meta)reviewers, submission ID, history
+    - `CoiInst.csv` (separator: `;`): submission ID, authors, (meta)reviewers
