@@ -98,7 +98,7 @@ are required.
    them into the format required by CLOSET.
 
    ```
-   python convert.py subreviewers/*.csv
+   python merge.py subreviewers/*.csv
    ```
 
    This will generate two files. The file `subreviewers.xlsx` contains the list
