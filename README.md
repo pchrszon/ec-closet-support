@@ -1,4 +1,4 @@
-# Conflict-of-Interest Detection using CLOSET and Easy Chair
+# Conflict-of-Interest Detection using CLOSET and EasyChair
 
 Handling conflicts of interest (CoI) is an integral part of the reviewing
 process for journal and conference submissions. CoI can be detected
@@ -7,11 +7,11 @@ automatically using the
 The scripts in this repository support this CoI detection process for conferences
 that
 
-- have a sizable number of submissions and PC members that render manual checking
+- have a large number of submissions and PC members that render manual checking
   difficult,
 - use a double-blind reviewing policy,
 - allow the PC members to delegate some submissions to subreviewers, and
-- use Easy Chair for the conference management.
+- use [EasyChair](https://easychair.org/) for the conference management.
 
 CoI checking in this scenario is difficult, since authors generally cannot
 declare CoI with subreviewers at submission time as the subreviewers may not
@@ -59,11 +59,11 @@ also contains the columns that need to be filled in by the PC member, namely
 the name, email address, and [DBLP](dblp.org) page of the potential
 subreviewers.
 
-The `generate.py` scripts requires the following input files which can be
-obtained from Easy Chair. Note that downloading these files requires that you
+The `generate.py` script requires the following input files which can be
+obtained from EasyChair. Note that downloading these files requires that you
 are logged in as the conference chair.
 
-1. The list of reviewers. In the Easy Chair menu bar, select "Assignment",
+1. The list of reviewers. In the EasyChair menu bar, select "Assignment",
    "Download in CSV". Then, from the table, download `reviewer.csv`.
 2. In the same table, download `assignment.csv`.
 3. In the menu bar, select "Submissions". Then, choose "Submissions in Excel"
@@ -76,7 +76,7 @@ command (you may need to adapt the filenames or paths depending on where you
 have saved the files):
 
 ```
-./generate.py reviewer.csv assignment.csv submissions.csv
+python generate.py reviewer.csv assignment.csv submissions.csv
 ```
 
 This will generate an Excel table for each PC member with the columns
@@ -98,7 +98,7 @@ are required.
    them into the format required by CLOSET.
 
    ```
-   ./convert.py subreviewers/*.csv
+   python convert.py subreviewers/*.csv
    ```
 
    This will generate two files. The file `subreviewers.xlsx` contains the list
@@ -108,7 +108,7 @@ are required.
    whether the provided data is consistent over all entries.
 
 
-Finally, download the conference data (in Excel format) in Easy Chair by
+Finally, download the conference data (in Excel format) in EasyChair by
 selecting "Premium" and then "Conference data download" from the menu. You may
 now send off the conference data Excel file, the `subreviewers.xlsx` file, and
 the `assignment.xlsx` file for CoI checking using CLOSET.
@@ -128,10 +128,10 @@ subreviewer tables in CSV format are still contained in the `subreviewers`
 directory, execute the following command:
 
 ```
-./feedback.py CoiPC.csv CoiInst.csv subreviewers/*.csv
+python feedback.py CoiPC.csv CoiInst.csv subreviewers/*.csv
 ```
 
-This will generate a new Excel table for each subreviewer containing one
+This will generate a new Excel table for each PC member containing one
 additional new column named "conflict of interest". You may now distribute these
 tables to the PC members.
 
